@@ -1,0 +1,48 @@
+<link 
+href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+rel="stylesheet"  type='text/css'>
+
+  <h1>Overpayment Details</h1>
+
+  <div class="search">
+    <input type="number" [(ngModel)]="id" class="searchTerm" placeholder="Please enter your member id to find your overpayment details">
+    <button type="submit" class="searchButton" (click)="search()">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+  <br>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Overpayment ID</th>
+        <th>Claim Number</th>
+        <th>Balance Amount</th>
+        <th>Overpayment Amount</th>
+        <th>Amount Paid</th>
+        <th>Days Left To Pay</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let overpayment of overpayments">
+        <td>{{ overpayment.overpayment_id}}</td>
+        <td>{{ overpayment.claim_number}}</td>
+        <td>{{ overpayment.balance_amount}}</td>
+        <td>{{ overpayment.overpayment_amount}}</td>
+        <td>{{overpayment.overpayment_amount-overpayment.balance_amount}}</td>
+        <td>{{ overpayment.days_left}}</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td></td>
+        <td>{{aggBalanceAmt}}</td>
+        <td>{{aggOverpaymentAmt}}</td>
+        <td>{{aggAmtPaid}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+
+  
